@@ -12,13 +12,17 @@ let primeBtn = document.querySelector('#primeBtn');
 let primary = document.querySelector('#primary');
 let home = document.querySelector('#home');
 
-// this function addsArrays 
+// reset value
+const reset = document.querySelector('#reset');
+
+// this function adds to the obj 
 const addArr = (val, sqVal, lotVal, obj) => {
     if (val.value === '' || sqVal.value === '' || lotVal.value === '') {
         alert('Please enter a number.');
     } else {
         let num = Number(val.value);
         let lotSq = Number(lotVal.value);
+        let sqFt = Number(sqVal.value);
         obj.price += num
         obj.lotSqFt += lotSq;
         obj.sqFt += sqFt;
@@ -29,12 +33,17 @@ const addArr = (val, sqVal, lotVal, obj) => {
         primaryHome.avg += primaryHome.price / primaryHome.sqFt;
         console.log(obj);
         primary.style.display = 'none';
-        let sqFt = Number(sqVal.value);
-        // for (let i = 0; i < obj.length; i++) {
-        //     home.appendChild(`<li>obj[i]</li>`);
-        // }
     } 
 }
+
+reset.addEventListener('click', () => {
+    // we want to reset the obj
+    primaryHome.price = 0;
+    primaryHome.lotSqFt = 0;
+    primaryHome.sqFt = 0;
+    primaryHome.avg = 0;
+    primary.style.display = 'block';
+});
 
 primeBtn.addEventListener('click', () => {
     addArr(primeIn, primeLotSqFt, primeSqFt, primaryHome);
