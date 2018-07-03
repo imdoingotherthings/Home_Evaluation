@@ -33,7 +33,6 @@ const addArr = (val, sqVal, lotVal, obj) => {
         sqVal.value = '';
         lotVal.value = '';
         primaryHome.avg += primaryHome.price / primaryHome.sqFt;
-        console.log(obj);
         primary.style.display = 'none';
     } 
 }
@@ -50,5 +49,6 @@ reset.addEventListener('click', () => {
 primeBtn.addEventListener('click', () => {
     addArr(primeIn, primeLotSqFt, primeSqFt, primaryHome);
     document.querySelector('#stack').style.display = 'block';
+    text.innerHTML = "Add 5 or more homes for full evaluation. 10 homes is ideal."
 });
 
