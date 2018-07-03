@@ -15,6 +15,8 @@ let home = document.querySelector('#home');
 // reset value
 const reset = document.querySelector('#reset');
 
+document.querySelector('#stack').style.display = 'none';
+
 // this function adds to the obj 
 const addArr = (val, sqVal, lotVal, obj) => {
     if (val.value === '' || sqVal.value === '' || lotVal.value === '') {
@@ -47,5 +49,6 @@ reset.addEventListener('click', () => {
 
 primeBtn.addEventListener('click', () => {
     addArr(primeIn, primeLotSqFt, primeSqFt, primaryHome);
+    document.querySelector('#stack').style.display = 'block';
 });
 
