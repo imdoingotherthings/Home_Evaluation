@@ -52,3 +52,4 @@ primeBtn.addEventListener('click', () => {
     text.innerHTML = "Add 5 or more homes for full evaluation. 10 homes is ideal."
 });
 
+document.querySelector('#foot').innerHTML = `Created by Asai Andrade - Copyright ${new Date().getFullYear()}`;

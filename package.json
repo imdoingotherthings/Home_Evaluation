@@ -18,5 +18,8 @@
   "homepage": "https://github.com/imdoingotherthings/Home_Evaluation#readme",
   "devDependencies": {
     "live-server": "^1.2.0"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
   }
 }
