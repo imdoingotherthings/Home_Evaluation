@@ -16,6 +16,7 @@ let home = document.querySelector('#home');
 const reset = document.querySelector('#reset');
 
 document.querySelector('#stack').style.display = 'none';
+document.querySelector('#mortgageStackComplex').style.display = 'none';
 
 // this function adds to the obj 
 const addArr = (val, sqVal, lotVal, obj) => {

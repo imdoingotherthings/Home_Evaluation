@@ -7,7 +7,27 @@ let objHome = {
     avg: 0
 };
 
+
+
+let mortgage = {
+    listPrice: 0,
+    fairPrice: 0,
+    discount: 0,
+    purchasePrice: 0,
+    percentDown: 0,
+    downPayment: 0,
+    amtFinance: 0,
+    interest: 0,
+    costOfRepairs: 0,
+    payment: 0,
+    years: 0,
+    monthlyMrtg: 0,
+    rentReady: 0,
+    totalOfAVG: 0
+}
+
 // form document
+const avgsStack = document.querySelector('#averagesStack');
 const stack = document.querySelector('#stack');
 const stackPrice = document.querySelector('#stackPrice');
 const stackSqFt = document.querySelector('#stackSqFt');
@@ -20,36 +40,36 @@ const avgPrice = document.querySelector('#avgPrice');
 const avgLot = document.querySelector('#avgLot'); 
 const avgSq = document.querySelector('#avgSq'); 
 const avgPriceSq = document.querySelector('#avgPriceSq'); 
+const fair = document.querySelector('#fairMarket'); 
+const yourHome = document.querySelector('#yourHome'); 
 
-// functions and logic
+// functions and logic - this is the average of the houses
 const averages = (text, num, avg) => {
     let sum = 0;
     for (let i = 0; i < arr.length; i++) {
         sum += arr[i][num];
-        let total = sum / arr.length;
-        text.innerHTML = `${avg}: $${total.toFixed(2)}`;  
+        mortgage.totalOfAVG = sum / arr.length;
+        text.innerHTML = `${avg}: $${mortgage.totalOfAVG.toFixed(2)}`;  
     }
 };
 
+// this is the primary home calculation
 const addHomes = (val, sqVal, lotVal, obj) => {
-    if (val.value === '' || sqVal.value === '' || lotVal.value === '') {
-        alert('Please enter a number.');
-    } else {
-        let num = Number(val.value);
-        let lotSq = Number(lotVal.value);
-        let sqFt = Number(sqVal.value);
-        obj.price += num
-        obj.lotSqFt += lotSq;
-        obj.sqFt += sqFt;
-        
-        val.value = '';
-        sqVal.value = '';
-        lotVal.value = '';
-        objHome.avg += objHome.price / objHome.sqFt;
-        primary.style.display = 'none';
-    } 
+    let num = Number(val.value);
+    let lotSq = Number(lotVal.value);
+    let sqFt = Number(sqVal.value);
+    obj.price += num
+    obj.lotSqFt += lotSq;
+    obj.sqFt += sqFt;
+    
+    val.value = '';
+    sqVal.value = '';
+    lotVal.value = '';
+    objHome.avg += objHome.price / objHome.sqFt;
+    primary.style.display = 'none';
 }
 
+// this is the event listener that does all the calculation for all the houses 
 stackBtn.addEventListener('click', () => {
     addHomes(stackPrice, stackSqFt, stackLotSqFt, objHome);
     if (objHome.price === 0 || objHome.lotSqFt === 0 || objHome.sqFt === 0) {
@@ -70,16 +90,11 @@ stackBtn.addEventListener('click', () => {
 
     text.style.display = 'none';
 
-    console.log(primaryHome.price);
-
     if (arr.length === 2) {
         stack.style.display = 'none';
-        let sum = 0;
-        for (let i = 0; i < arr.length; i++) {
-            sum += arr[i][3];
-            let total = sum / arr.length;
-            console.log(primaryHome.price * total);  
-        }
+        avgsStack.style.display = 'none';
+        document.querySelector('#mortgageStackComplex').style.display = 'block';
+        // yourHome.innerHTML = `Your Home Price: $${primaryHome.price}`;
+        // fair.innerHTML = `Fair Market Value: $${mortgage.totalOfAVG * primaryHome.price.toFixed(2)}`;
     }
-    console.log(arr);
 });
